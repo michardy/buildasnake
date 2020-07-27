@@ -1,0 +1,10 @@
+#! /bin/bash
+curl https://www.python.org/ftp/python/$1/Python-$1.tgz | tar -xz
+cd Python-$1
+./configure
+make
+cd ..
+virtualenv --python Python-$1/python venv
+echo "To enter virtualenv type \"source venv/bin/activate\""
+echo "To exit type \"deactivate\""
+source venv/bin/activate
