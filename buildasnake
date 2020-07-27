@@ -1,4 +1,8 @@
 #! /bin/bash
+# Copyright Michael Hardy 2020
+# This software is released under the terms of the MIT license
+# See /LICENSE for more information
+
 curl https://www.python.org/ftp/python/$1/Python-$1.tgz | tar -xz
 cd Python-$1
 ./configure
