@@ -2,13 +2,18 @@
 # Copyright Michael Hardy 2020
 # This software is released under the terms of the MIT license
 # See /LICENSE for more information
-
+INSTPATH=$PWD/snake/Python-$1
+mkdir buildtemp
+mkdir snake
+cd buildtemp
 curl https://www.python.org/ftp/python/$1/Python-$1.tgz | tar -xz
 cd Python-$1
-./configure
+./configure --prefix=$INSTPATH
 make
-cd ..
-virtualenv --python Python-$1/python venv
+make install
+cd ../..
+MATCHER="snake/Python-$1/bin/python*"
+SNAKES=( $MATCHER )
+virtualenv --python "${SNAKES[0]}" venv
 echo "To enter virtualenv type \"source venv/bin/activate\""
 echo "To exit type \"deactivate\""
-source venv/bin/activate
